@@ -25,4 +25,12 @@ class MergeSortTest {
 
         Assert.assertArrayEquals(arrayOf("bar", "foo"), x.mergeSort())
     }
+
+    @Test
+    fun `can sort large collection`() {
+        val items = (0..10000).toList()
+        val shuffled = items.shuffled().toTypedArray()
+
+        Assert.assertArrayEquals(items.toTypedArray(), shuffled.bubbleSort())
+    }
 }

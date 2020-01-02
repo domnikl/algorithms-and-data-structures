@@ -25,4 +25,12 @@ class QuickSortTest {
 
         Assert.assertArrayEquals(arrayOf("bar", "foo"), x.quickSort())
     }
+
+    @Test
+    fun `can sort large collection`() {
+        val x = (0..10000).toList()
+        val y = x.shuffled().toTypedArray()
+
+        Assert.assertArrayEquals(x.toTypedArray(), y.quickSort())
+    }
 }

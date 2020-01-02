@@ -13,6 +13,14 @@ class BubbleSortTest {
     }
 
     @Test
+    fun `can sort large collection`() {
+        val x = (0..10000).toList()
+        val y = x.shuffled().toTypedArray()
+
+        assertArrayEquals(x.toTypedArray(), y.bubbleSort())
+    }
+
+    @Test
     fun `can sort integer arrays`() {
         val x = arrayOf(1, 42, 3)
 
