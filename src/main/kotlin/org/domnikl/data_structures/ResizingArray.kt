@@ -7,7 +7,7 @@ class ResizingArray<T>(private var capacity: Int) {
 
     private var data: Array<Any?> = Array(capacity) { null }
 
-    fun insert(index: Int, value: T) {
+    operator fun set(index: Int, value: T) {
         resizeIfNeeded()
 
         size.downTo(index).forEach {
@@ -18,6 +18,10 @@ class ResizingArray<T>(private var capacity: Int) {
         size++
     }
 
+    operator fun get(index: Int): T? {
+        return data[index] as T?
+    }
+
     fun delete(index: Int) {
         (index until size - 1).forEach {
             data[it] = data[it + 1]
@@ -25,10 +29,6 @@ class ResizingArray<T>(private var capacity: Int) {
 
         data[size - 1] = null
         size--
-    }
-
-    fun get(index: Int): T? {
-        return data[index] as T?
     }
 
     private fun resizeIfNeeded() {
