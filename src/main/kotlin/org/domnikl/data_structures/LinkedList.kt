@@ -27,17 +27,7 @@ class LinkedList<T : Any> {
         size++
     }
 
-    fun toList(): List<T> {
-        val l = mutableListOf<T>()
-        var current = head
-
-        do {
-            current?.data?.let { l.add(it) }
-            current = current?.next
-        } while (current != null)
-
-        return l.toList()
-    }
+    fun toList() = toSequence().toList()
 
     fun first(): T {
         if (head == null) {
