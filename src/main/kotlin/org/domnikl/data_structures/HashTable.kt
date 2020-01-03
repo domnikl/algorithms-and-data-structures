@@ -1,7 +1,10 @@
 package org.domnikl.data_structures
 
+import kotlin.math.absoluteValue
+
 class HashTable<K,V> {
-    private var capacity = 1
+    private var capacity = 16
+    private var nonNullIndices = 0
 
     var size: Int = 0
         private set
@@ -9,15 +12,16 @@ class HashTable<K,V> {
     private var data: Array<LinkedList<Node<K,V>>?> = Array(capacity) { null }
 
     fun set(key: K, value: V) {
-        if (size == capacity) { // collisions may occur nonetheless
+        if (nonNullIndices == capacity) {
             resize()
         }
 
         val n = Node(key, value)
-        val hash = hash(key, capacity)
+        val hash = indexFor(key, capacity)
 
         if (data[hash] != null) {
             data[hash]?.addFirst(n)
+            nonNullIndices++
         } else {
             val linkedList = LinkedList<Node<K,V>>()
             linkedList.addFirst(n)
@@ -31,13 +35,15 @@ class HashTable<K,V> {
     private fun resize() {
         val newCapacity = capacity * 2
         val newData: Array<LinkedList<Node<K,V>>?> = Array(newCapacity) { null }
+        var newNonNullIndices = 0
 
         data.forEach { list ->
             list?.toList()?.forEach {
-                val hash = hash(it.key, newCapacity)
+                val hash = indexFor(it.key, newCapacity)
 
                 if (newData[hash] != null) {
                     newData[hash]?.addFirst(it)
+                    newNonNullIndices++
                 } else {
                     val linkedList = LinkedList<Node<K,V>>()
                     linkedList.addFirst(it)
@@ -47,6 +53,7 @@ class HashTable<K,V> {
             }
         }
 
+        nonNullIndices = newNonNullIndices
         capacity = newCapacity
         data = newData
     }
@@ -70,11 +77,11 @@ class HashTable<K,V> {
     }
 
     private fun linkedListForKey(key: K): LinkedList<Node<K,V>>? {
-        return data[hash(key, capacity)]
+        return data[indexFor(key, capacity)]
     }
 
-    private fun hash(key: K, capacity: Int): Int {
-        return key.hashCode() % capacity
+    private fun indexFor(key: K, capacity: Int): Int {
+        return key.hashCode().absoluteValue % capacity
     }
 
     private data class Node<K,V>(val key: K, val value: V)
