@@ -1,6 +1,6 @@
 package org.domnikl.data_structures
 
-class LinkedList<T> {
+class LinkedList<T : Any> {
     var size: Int = 0
         private set
 
@@ -89,7 +89,7 @@ class LinkedList<T> {
 
         do {
             if (current?.next?.data == element) {
-                current?.next = current?.next?.next
+                current.next = current.next?.next
                 size--
             }
 
@@ -99,6 +99,16 @@ class LinkedList<T> {
 
     override fun toString(): String {
         return toList().joinToString(", ")
+    }
+
+    fun toSequence(): Sequence<T> {
+        var current = head
+
+        return generateSequence {
+            val data = current?.data
+            current = current?.next
+            data
+        }
     }
 
     private class Node<N>(val data: N) {

@@ -90,4 +90,14 @@ class LinkedListTest {
         assertEquals(0, list.size)
         assertEquals(emptyList<Int>(), list.toList())
     }
+
+    @Test
+    fun `can be converted to a sequence`() {
+        val list = LinkedList<Int>().also {
+            it.addFirst(2)
+            it.addFirst(1)
+        }
+
+        assertEquals(listOf(1, 2), list.toSequence().toList())
+    }
 }

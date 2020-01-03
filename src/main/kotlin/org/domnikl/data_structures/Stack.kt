@@ -1,6 +1,6 @@
 package org.domnikl.data_structures
 
-class Stack<T> {
+class Stack<T : Any> {
     private val linkedList = LinkedList<T>()
 
     val size
