@@ -9,38 +9,38 @@ class HashTableTest {
 
     @Test
     fun `can set elements in hash table`() {
-        hashTable.set("A", "A")
-        hashTable.set("B", "B")
-        hashTable.set("C", "C")
+        hashTable["A"] = "A"
+        hashTable["B"] = "B"
+        hashTable["C"] = "C"
 
         assertEquals(3, hashTable.size)
     }
 
     @Test
     fun `can get elements from hash table`() {
-        hashTable.set("A", "A")
-        hashTable.set("B", "B")
-        hashTable.set("C", "C")
+        hashTable["A"] = "A"
+        hashTable["B"] = "B"
+        hashTable["C"] = "C"
 
-        assertEquals("A", hashTable.get("A"))
-        assertEquals("B", hashTable.get("B"))
-        assertEquals("C", hashTable.get("C"))
+        assertEquals("A", hashTable["A"])
+        assertEquals("B", hashTable["B"])
+        assertEquals("C", hashTable["C"])
     }
 
     @Test
     fun `returns null if element was not found`() {
-        assertNull(hashTable.get("foobar"))
+        assertNull(hashTable["foobar"])
     }
 
     @Test
     fun `can delete values`() {
-        hashTable.set("A", "A")
+        hashTable["A"] = "A"
 
-        assertEquals("A", hashTable.get("A"))
+        assertEquals("A", hashTable["A"])
 
         hashTable.delete("A")
 
-        assertNull(hashTable.get("A"))
+        assertNull(hashTable["A"])
     }
 
     @Test
@@ -49,11 +49,11 @@ class HashTableTest {
         val items = (0..1_000_000)
 
         for (item in items) {
-            hashTable.set(item, item)
+            hashTable[item] = item
         }
 
         for (item in items) {
-            assertEquals(item, hashTable.get(item))
+            assertEquals(item, hashTable[item])
         }
     }
 }

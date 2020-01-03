@@ -11,7 +11,7 @@ class HashTable<K,V> {
 
     private var data: Array<LinkedList<Node<K,V>>?> = Array(capacity) { null }
 
-    fun set(key: K, value: V) {
+    operator fun set(key: K, value: V) {
         if (nonNullIndices == capacity) {
             resize()
         }
@@ -30,6 +30,10 @@ class HashTable<K,V> {
         }
 
         size++
+    }
+
+    operator fun get(key: K): V? {
+        return nodeForKey(key)?.value
     }
 
     private fun resize() {
@@ -60,10 +64,6 @@ class HashTable<K,V> {
 
     fun delete(key: K) {
         nodeForKey(key)?.let { linkedListForKey(key)?.delete(it) }
-    }
-
-    fun get(key: K): V? {
-        return nodeForKey(key)?.value
     }
 
     private fun nodeForKey(key: K): Node<K,V>? {
