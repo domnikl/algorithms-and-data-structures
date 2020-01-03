@@ -13,9 +13,9 @@ class LinkedListTest {
     fun `can add new elements`() {
         val list = LinkedList<String>()
 
-        list.add("A")
-        list.add("B")
-        list.add("C")
+        list.addFirst("A")
+        list.addFirst("B")
+        list.addFirst("C")
 
         assertEquals(3, list.size)
         assertEquals(listOf("C", "B", "A"), list.toList())
@@ -25,7 +25,7 @@ class LinkedListTest {
     fun `can add new elements in the back`() {
         val list = LinkedList<String>()
 
-        list.add("A")
+        list.addFirst("A")
         list.addLast("B")
         list.addLast("C")
 
@@ -34,8 +34,8 @@ class LinkedListTest {
     }
 
     @Test
-    fun `get first element`() {
-        val list = LinkedList<Int>().also { it.add(42) }
+    fun `can get first element`() {
+        val list = LinkedList<Int>().also { it.addFirst(42) }
 
         assertEquals(42, list.first())
     }
@@ -43,8 +43,8 @@ class LinkedListTest {
     @Test
     fun `get last element`() {
         val list = LinkedList<Int>().also {
-            it.add(2)
-            it.add(42)
+            it.addFirst(2)
+            it.addFirst(42)
         }
 
         assertEquals(2, list.last())
@@ -53,8 +53,8 @@ class LinkedListTest {
     @Test
     fun `delete first element`() {
         val list = LinkedList<Int>().also {
-            it.add(2)
-            it.add(42)
+            it.addFirst(2)
+            it.addFirst(42)
         }
 
         list.deleteFirst()
@@ -66,10 +66,10 @@ class LinkedListTest {
     @Test
     fun `can delete a value from the list`() {
         val list = LinkedList<Int>().also {
-            it.add(3)
-            it.add(2)
-            it.add(42)
-            it.add(2)
+            it.addFirst(3)
+            it.addFirst(2)
+            it.addFirst(42)
+            it.addFirst(2)
         }
 
         list.delete(2)
@@ -81,8 +81,8 @@ class LinkedListTest {
     @Test
     fun `can be cleared`() {
         val list = LinkedList<Int>().also {
-            it.add(2)
-            it.add(42)
+            it.addFirst(2)
+            it.addFirst(42)
         }
 
         list.clear()

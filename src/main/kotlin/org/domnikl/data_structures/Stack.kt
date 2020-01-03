@@ -7,7 +7,7 @@ class Stack<T> {
         get() = linkedList.size
 
     fun push(element: T) {
-        linkedList.add(element)
+        linkedList.addFirst(element)
     }
 
     fun pop(): T {

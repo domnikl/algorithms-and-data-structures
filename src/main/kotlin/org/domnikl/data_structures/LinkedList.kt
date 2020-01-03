@@ -6,7 +6,7 @@ class LinkedList<T> {
 
     private var head: Node<T>? = null
 
-    fun add(element: T) {
+    fun addFirst(element: T) {
         val newNode = Node(element)
 
         if (head == null) {
@@ -36,7 +36,7 @@ class LinkedList<T> {
             current = current?.next
         } while (current != null)
 
-        return l
+        return l.toList()
     }
 
     fun first(): T {
