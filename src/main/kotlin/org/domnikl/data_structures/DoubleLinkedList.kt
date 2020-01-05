@@ -72,11 +72,15 @@ class DoubleLinkedList<T> {
     fun deleteFirst() {
         head = head?.next
         size--
+
+        if (size == 0) tail = head
     }
 
     fun deleteLast() {
         tail = tail?.previous
         size--
+
+        if (size == 0) head = tail
     }
 
     fun clear() {

@@ -84,4 +84,30 @@ class DoubleLinkedListTest {
         assertEquals(42, list.first())
         assertEquals(1, list.size)
     }
+
+    @Test
+    fun `can delete last remaining element in list`() {
+        val list = DoubleLinkedList<Int>().also {
+            it.addFirst(2)
+            it.addFirst(42)
+        }
+
+        list.deleteFirst()
+        list.deleteFirst()
+
+        assertEquals(emptyList<Int>(), list.toList())
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun `can delete first remaining element in list`() {
+        val list = DoubleLinkedList<Int>().also {
+            it.addFirst(2)
+            it.addFirst(42)
+        }
+
+        list.deleteLast()
+        list.deleteLast()
+
+        list.first()
+    }
 }
