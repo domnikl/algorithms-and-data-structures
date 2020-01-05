@@ -12,11 +12,16 @@ class Graph<T : Any> {
         l.addFirst(to)
     }
 
+    fun addUndirectedEdge(a: T, b: T) {
+        addEdge(a, b)
+        addEdge(b, a)
+    }
+
     fun breadthFirst(source: T): List<T> {
-        val visited = mutableMapOf<T,Boolean>()
+        val visited = mutableListOf<T>()
         val queue = Queue<T>()
 
-        visited[source] = true
+        visited.add(source)
         queue.add(source)
 
         while (queue.size != 0) {
@@ -24,35 +29,34 @@ class Graph<T : Any> {
             val connections = linkedLists[vertex]?.toList()
 
             connections?.forEach {
-                if (!visited.getOrPut(it) { false }) {
-                    visited[it] = true
+                if (it !in visited) {
+                    visited.add(it)
                     queue.add(it)
                 }
             }
         }
 
-        return visited.filter { it.value }.map { it.key }
+        return visited
     }
 
     fun depthFirst(source: T): List<T> {
-        val visited = mutableMapOf<T,Boolean>()
+        val visited = mutableListOf<T>()
         val stack = Stack<T>()
 
-        visited[source] = true
         stack.push(source)
 
         while (!stack.isEmpty()) {
             val vertex = stack.pop()
+            visited.add(vertex)
             val connections = linkedLists[vertex]?.toList()
 
             connections?.forEach {
-                if (!visited.getOrPut(it) { false }) {
-                    visited[it] = true
+                if (it !in visited) {
                     stack.push(it)
                 }
             }
         }
 
-        return visited.filter { it.value }.map { it.key }
+        return visited
     }
 }
