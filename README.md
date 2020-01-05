@@ -18,3 +18,8 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 * [Bubble sort](src/main/kotlin/org/domnikl/algorithms/sorting/BubbleSort.kt)
 * [Quick sort](src/main/kotlin/org/domnikl/algorithms/sorting/QuickSort.kt)
 * [Merge sort](src/main/kotlin/org/domnikl/algorithms/sorting/MergeSort.kt)
+
+## graphs
+
+* [breadth first search](src/main/kotlin/org/domnikl/algorithms/graphs/Graph.kt)
+* [depth first search](src/main/kotlin/org/domnikl/algorithms/graphs/Graph.kt)
