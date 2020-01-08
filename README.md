@@ -12,6 +12,7 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 * [Hash table](src/main/kotlin/org/domnikl/data_structures/HashTable.kt)
 * [Binary heap](src/main/kotlin/org/domnikl/data_structures/BinaryHeap.kt)
 * [AVL tree](src/main/kotlin/org/domnikl/data_structures/AvlTree.kt)
+* [BTree](src/main/kotlin/org/domnikl/data_structures/BTree.kt)
 
 ## sorting
 
