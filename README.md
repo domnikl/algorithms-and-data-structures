@@ -29,3 +29,4 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 
 * [breadth first search](src/main/kotlin/org/domnikl/algorithms/graphs/Graph.kt)
 * [depth first search](src/main/kotlin/org/domnikl/algorithms/graphs/Graph.kt)
+* [Dijkstra's shorted path first](src/main/kotlin/org/domnikl/algorithms/graphs/WeightedGraph.kt)
