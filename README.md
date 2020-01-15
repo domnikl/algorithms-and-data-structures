@@ -4,7 +4,7 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 
 ## data structures
 
-* [Dyncamicly resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
+* [Dynamicly resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
 * [Linked list](src/main/kotlin/org/domnikl/data_structures/LinkedList.kt)
 * [Double linked list](src/main/kotlin/org/domnikl/data_structures/DoubleLinkedList.kt)
 * [Stack](src/main/kotlin/org/domnikl/data_structures/Stack.kt)
@@ -15,7 +15,7 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 * [BTree](src/main/kotlin/org/domnikl/data_structures/BTree.kt)
 * [Bloom filter](src/main/kotlin/org/domnikl/data_structures/BloomFilter.kt)
 
-# search
+## search
 
 * [Binary search](src/main/kotlin/org/domnikl/algorithms/search/BinarySearch.kt)
 
