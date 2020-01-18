@@ -31,6 +31,6 @@ class MergeSortTest {
         val items = (0..10000).toList()
         val shuffled = items.shuffled().toTypedArray()
 
-        Assert.assertArrayEquals(items.toTypedArray(), shuffled.bubbleSort())
+        Assert.assertArrayEquals(items.toTypedArray(), shuffled.mergeSort())
     }
 }

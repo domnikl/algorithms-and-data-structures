@@ -14,30 +14,35 @@ fun <T : Comparable<T>> Array<T>.mergeSort(): Array<T> {
 }
 
 private fun <T : Comparable<T>> Array<T>.merge(other: Array<T>): Array<T> {
-    var left = this
-    var right = other
-    var index = 0
-    val result = left + right
+    var i = 0
+    var j = 0
+    var k = 0
 
-    while (left.isNotEmpty() && right.isNotEmpty()) {
-        if (left[0] <= right[0]) {
-            result[index++] = left[0]
-            left = left.sliceArray(1 until left.size)
+    val results = this + other
+
+    while (i < this.size && j < other.size) {
+        if (this[i]<= other[j]) {
+            results[k] = this[i]
+            i++
         } else {
-            result[index++] = right[0]
-            right = right.sliceArray(1 until right.size)
+            results[k] = other[j]
+            j++
         }
 
-        while (left.isNotEmpty()) {
-            result[index++] = left[0]
-            left = left.sliceArray(1 until left.size)
-        }
-
-        while (right.isNotEmpty()) {
-            result[index++] = right[0]
-            right = right.sliceArray(1 until right.size)
-        }
+        k++
     }
 
-    return result
+    while (i < this.size) {
+        results[k] = this[i]
+        i++
+        k++
+    }
+
+    while (j < other.size) {
+        results[k] = other[j]
+        j++
+        k++
+    }
+
+    return results
 }
