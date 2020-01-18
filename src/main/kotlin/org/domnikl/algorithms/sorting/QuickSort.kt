@@ -1,7 +1,7 @@
 package org.domnikl.algorithms.sorting
 
 fun <T : Comparable<T>> Array<T>.quickSort(): Array<T> {
-    return this.clone().quickSort(0, this.size - 1)
+    return this.quickSort(0, this.size - 1)
 }
 
 private fun <T : Comparable<T>> Array<T>.quickSort(low: Int, high: Int): Array<T> {

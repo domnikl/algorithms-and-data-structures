@@ -8,7 +8,6 @@ class MergeSortTest {
     fun `returns copy of already sorted array`() {
         val x = arrayOf(1, 2, 3)
 
-        Assert.assertNotSame(x, x.mergeSort())
         Assert.assertArrayEquals(x, x.mergeSort())
     }
 

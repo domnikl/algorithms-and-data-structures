@@ -1,24 +1,23 @@
 package org.domnikl.algorithms.sorting
 
 fun <T : Comparable<T>> Array<T>.bubbleSort(): Array<T> {
-    val copy = this.clone()
     var swapped: Boolean
 
     do {
         swapped = false
 
         (1 until this.size).forEach {
-            if (copy[it - 1] > copy[it]) {
-                val bubbleA = copy[it - 1]
-                val bubbleB = copy[it]
+            if (this[it - 1] > this[it]) {
+                val bubbleA = this[it - 1]
+                val bubbleB = this[it]
 
-                copy[it - 1] = bubbleB
-                copy[it] = bubbleA
+                this[it - 1] = bubbleB
+                this[it] = bubbleA
 
                 swapped = true
             }
         }
     } while (swapped)
 
-    return copy
+    return this
 }

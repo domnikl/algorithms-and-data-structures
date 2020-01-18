@@ -8,7 +8,6 @@ class BubbleSortTest {
     fun `returns copy of already sorted array`() {
         val x = arrayOf(1, 2, 3)
 
-        assertNotSame(x, x.bubbleSort())
         assertArrayEquals(x, x.bubbleSort())
     }
 

@@ -8,7 +8,6 @@ class SelectionSortTest {
     fun `returns copy of already sorted array`() {
         val x = arrayOf(1, 2, 3)
 
-        Assert.assertNotSame(x, x.selectionSort())
         Assert.assertArrayEquals(x, x.selectionSort())
     }
 

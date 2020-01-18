@@ -1,23 +1,21 @@
 package org.domnikl.algorithms.sorting
 
 fun <T : Comparable<T>> Array<T>.selectionSort(): Array<T> {
-    val copy = this.clone()
-
-    for (i in copy.indices) {
+    for (i in this.indices) {
         var jMin = i
 
-        for (j in (i + 1 until copy.size)) {
-            if (copy[j] < copy[jMin]) {
+        for (j in (i + 1 until this.size)) {
+            if (this[j] < this[jMin]) {
                 jMin = j
             }
         }
 
         if (jMin != i) {
-            copy.swap(i, jMin)
+            this.swap(i, jMin)
         }
     }
 
-    return copy
+    return this
 }
 
 private fun <T> Array<T>.swap(a: Int, b: Int) {
