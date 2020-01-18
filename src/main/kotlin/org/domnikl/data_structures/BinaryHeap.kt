@@ -1,7 +1,7 @@
 package org.domnikl.data_structures
 
 @Suppress("UNCHECKED_CAST")
-class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
+sealed class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
     var size = 0
         private set
 
@@ -28,7 +28,7 @@ class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
     private fun heapifyUp() {
         var index = size - 1
 
-        while (hasParent(index) && parent(index)!! < this[index]!!) {
+        while (hasParent(index) && this.compare(parent(index)!!, this[index]!!)) {
             swap(parentIndex(index), index)
             index = parentIndex(index)
         }
@@ -40,11 +40,11 @@ class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
         while (hasLeftChild(index)) {
             var smallerChildIndex = leftChildIndex(index)
 
-            if (hasRightChild(index) && rightChild(index)!! > leftChild(index)!!) {
+            if (hasRightChild(index) && !compare(rightChild(index)!!, leftChild(index)!!)) {
                 smallerChildIndex = rightChildIndex(index)
             }
 
-            if (this[index]!! > this[smallerChildIndex]!!) {
+            if (!compare(this[index]!!, this[smallerChildIndex]!!)) {
                 break
             } else {
                 swap(index, smallerChildIndex)
@@ -69,7 +69,7 @@ class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
         capacity *= 2
     }
 
-    fun extractMax(): T? {
+    fun pop(): T? {
         if (size == 0) return null
 
         return this[0]?.also {
@@ -77,6 +77,16 @@ class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
             size--
             heapifyDown()
         }
+    }
+
+    fun toList(): List<T> {
+        val x = mutableListOf<T>()
+
+        do {
+            val b = pop()?.also { x.add(it) }
+        } while (b != null)
+
+        return x.toList()
     }
 
     private fun leftChildIndex(parentIndex: Int) = 2 * parentIndex + 1
@@ -90,8 +100,22 @@ class BinaryHeap<T : Comparable<T>>(vararg elements: T?) {
     private fun leftChild(index: Int) = data[leftChildIndex(index)] as T?
     private fun rightChild(index: Int) = data[rightChildIndex(index)] as T?
     private fun parent(index: Int) = data[parentIndex(index)] as T?
+
+    protected abstract fun compare(a: T, b: T): Boolean
 }
 
-fun <T : Comparable<T>> binaryHeap(vararg elements: T?): BinaryHeap<T> {
-    return BinaryHeap(*elements)
+class MaxBinaryHeap<T : Comparable<T>>(vararg elements: T?) : BinaryHeap<T>(*elements) {
+    override fun compare(a: T, b: T) = a < b
+}
+
+class MinBinaryHeap<T : Comparable<T>>(vararg elements: T?) : BinaryHeap<T>(*elements) {
+    override fun compare(a: T, b: T) = a > b
+}
+
+fun <T : Comparable<T>> maxBinaryHeap(vararg elements: T?): BinaryHeap<T> {
+    return MaxBinaryHeap(*elements)
+}
+
+fun <T : Comparable<T>> minBinaryHeap(vararg elements: T?): BinaryHeap<T> {
+    return MinBinaryHeap(*elements)
 }
