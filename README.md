@@ -1,6 +1,6 @@
 # algorithms and data structures
 
-Implementations of common algorithms and data structures in Kotlin, mostly done for educational purposes.
+Implementations of common algorithms and data structures in Kotlin, mostly done for educational purposes. See [bigocheatsheet.com](https://www.bigocheatsheet.com) for time and space complexity comparisons.
 
 ## data structures
 
