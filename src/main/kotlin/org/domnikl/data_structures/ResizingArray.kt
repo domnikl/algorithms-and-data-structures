@@ -1,5 +1,7 @@
 package org.domnikl.data_structures
 
+import kotlin.math.max
+
 @Suppress("UNCHECKED_CAST")
 class ResizingArray<T>(private var capacity: Int) {
     var size = 0
@@ -10,8 +12,10 @@ class ResizingArray<T>(private var capacity: Int) {
     operator fun set(index: Int, value: T) {
         resizeIfNeeded()
 
-        size.downTo(index).forEach {
-            data[it + 1] = data[it]
+        if (size > 0) {
+            size.downTo(index).forEach {
+                data[it + 1] = data[it]
+            }
         }
 
         data[index] = value
@@ -20,6 +24,10 @@ class ResizingArray<T>(private var capacity: Int) {
 
     operator fun get(index: Int): T? {
         return data[index] as T?
+    }
+
+    fun toTypedArray(): Array<T> {
+        return data.sliceArray(0 until size) as Array<T>
     }
 
     fun delete(index: Int) {
@@ -49,8 +57,9 @@ class ResizingArray<T>(private var capacity: Int) {
 
     companion object {
         fun <T> fromArray(data: Array<Any?>): ResizingArray<T> {
-            val x = ResizingArray<T>(data.size)
-            x.data = data
+            val capacity = max(16, data.size)
+            val x = ResizingArray<T>(capacity)
+            data.copyInto(x.data)
             x.size = data.size
 
             return x

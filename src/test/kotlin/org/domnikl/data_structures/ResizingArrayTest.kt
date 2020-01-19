@@ -1,5 +1,6 @@
 package org.domnikl.data_structures
 
+import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -11,8 +12,10 @@ class ResizingArrayTest {
 
     @Test
     fun `can resize automatically`() {
-        val a = resizingArray(1, 2)
+        val a = resizingArray<Int>()
         a[0] = 3
+        a[1] = 1
+        a[2] = 2
 
         assertEquals(3, a.size)
         assertEquals(3, a[0])
@@ -50,5 +53,10 @@ class ResizingArrayTest {
     @Test
     fun `can get values`() {
         assertEquals(2, resizingArray(1, 2, 3)[1])
+    }
+
+    @Test
+    fun `can get typed array`() {
+        assertArrayEquals(arrayOf(4, 5, 9), resizingArray(4, 5, 9).toTypedArray())
     }
 }
