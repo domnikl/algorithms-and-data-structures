@@ -4,7 +4,7 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 
 ## data structures
 
-* [Dynamicly resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
+* [Dynamically resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
 * [Linked list](src/main/kotlin/org/domnikl/data_structures/LinkedList.kt)
 * [Double linked list](src/main/kotlin/org/domnikl/data_structures/DoubleLinkedList.kt)
 * [Stack](src/main/kotlin/org/domnikl/data_structures/Stack.kt)
