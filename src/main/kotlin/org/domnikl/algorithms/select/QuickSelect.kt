@@ -10,11 +10,14 @@ private fun <T : Comparable<T>> Array<T>.quickSelect(low: Int, high: Int, select
     require(low <= high) {
         "low: $low is smaller than high: $high"
     }
+
     val pivotIndex = this.partition(low, high)
+
     return when {
         pivotIndex == select -> {
             this[pivotIndex]
         }
+
         select < pivotIndex -> {
             this.quickSelect(low, pivotIndex - 1, select)
         }
@@ -28,6 +31,7 @@ private fun <T : Comparable<T>> Array<T>.partition(low: Int, high: Int): Int {
     require(low <= high) {
         "low: $low is smaller than high: $high"
     }
+
     var pivotIndex = Random.nextInt(low, high + 1)
     val pivot = this[pivotIndex]
     var i = low
@@ -47,6 +51,7 @@ private fun <T : Comparable<T>> Array<T>.partition(low: Int, high: Int): Int {
         }
 
         this[i] = this[j].also { this[j] = this[i] }
+
         if (pivotIndex == i) {
             pivotIndex = j
         } else if (pivotIndex == j) {

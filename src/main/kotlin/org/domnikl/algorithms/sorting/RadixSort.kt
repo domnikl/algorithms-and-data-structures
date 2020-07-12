@@ -6,11 +6,15 @@ import kotlin.math.pow
 
 fun IntArray.radixSort(): IntArray {
     if (this.isEmpty()) return this
+
     require(this.min()!! >= 0) { "number smaller zero not allowed" }
+
     val base = ceil(log10(this.max()!!.toDouble())).toInt()
+
     repeat(base + 1) {
         countingSort(10.0.pow(it).toInt())
     }
+
     return this
 }
 
