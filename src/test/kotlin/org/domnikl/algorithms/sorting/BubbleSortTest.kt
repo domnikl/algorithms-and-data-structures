@@ -1,6 +1,6 @@
 package org.domnikl.algorithms.sorting
 
-import org.junit.Assert.*
+import org.junit.Assert.assertArrayEquals
 import org.junit.Test
 
 class BubbleSortTest {

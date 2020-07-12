@@ -1,7 +1,7 @@
 package org.domnikl.data_structures
 
-class BTree<K : Comparable<K>, V>  {
-    private var root = Node<K,V>(0)
+class BTree<K : Comparable<K>, V> {
+    private var root = Node<K, V>(0)
 
     var height = 0
         private set
@@ -15,12 +15,12 @@ class BTree<K : Comparable<K>, V>  {
         return search(root, key, height)
     }
 
-    private fun search(tree: Node<K,V>?, key: K, height: Int): V? {
+    private fun search(tree: Node<K, V>?, key: K, height: Int): V? {
         val children = tree?.children
 
         if (height == 0) {
             children
-                ?.firstOrNull { it?.key == key}
+                ?.firstOrNull { it?.key == key }
                 ?.let { return it.value }
         } else {
             children?.forEachIndexed { j, c ->
@@ -46,7 +46,7 @@ class BTree<K : Comparable<K>, V>  {
         height++
     }
 
-    private fun insert(tree: Node<K,V>?, key: K, value: V, height: Int): Node<K,V>? {
+    private fun insert(tree: Node<K, V>?, key: K, value: V, height: Int): Node<K, V>? {
         var j = 0
         val newEntry = Entry(key, value)
 
@@ -79,9 +79,9 @@ class BTree<K : Comparable<K>, V>  {
         return if (tree.size < CHILDREN) null else split(tree)
     }
 
-    private fun split(node: Node<K,V>): Node<K,V> {
+    private fun split(node: Node<K, V>): Node<K, V> {
         val movedChildren = CHILDREN / 2
-        val newNode = Node<K,V>(movedChildren)
+        val newNode = Node<K, V>(movedChildren)
 
         node.children.takeLast(movedChildren).forEachIndexed { i, child ->
             newNode.children[i] = child
@@ -96,13 +96,13 @@ class BTree<K : Comparable<K>, V>  {
         const val CHILDREN = 4
     }
 
-    private class Node<K,V>(var size: Int) {
-        val children = arrayOfNulls<Entry<K,V>>(CHILDREN)
+    private class Node<K, V>(var size: Int) {
+        val children = arrayOfNulls<Entry<K, V>>(CHILDREN)
     }
 
-    private class Entry<K,V>(
+    private class Entry<K, V>(
         var key: K,
         val value: V?,
-        var next: Node<K,V>? = null
+        var next: Node<K, V>? = null
     )
 }

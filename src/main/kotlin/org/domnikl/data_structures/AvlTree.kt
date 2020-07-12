@@ -2,8 +2,8 @@ package org.domnikl.data_structures
 
 import kotlin.math.max
 
-class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
-    private var root: Node<K,V>? = null
+class AvlTree<K : Comparable<K>, V>(vararg init: Pair<K, V>) {
+    private var root: Node<K, V>? = null
 
     init {
         init.forEach {
@@ -19,7 +19,7 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
         return search(key, root) { visited?.invoke(it.key) }?.value
     }
 
-    private fun search(key: K, node: Node<K,V>?, visited: ((Node<K,V>) -> Unit)? = null): Node<K,V>? {
+    private fun search(key: K, node: Node<K, V>?, visited: ((Node<K, V>) -> Unit)? = null): Node<K, V>? {
         if (node == null) {
             return null
         }
@@ -35,7 +35,7 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
         return node
     }
 
-    private fun add(node: Node<K,V>?, newNode: Node<K,V>): Node<K,V>? {
+    private fun add(node: Node<K, V>?, newNode: Node<K, V>): Node<K, V>? {
         if (node == null) {
             return newNode
         }
@@ -88,12 +88,12 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
         delete(key, root)
     }
 
-    private fun delete(key: K, tree: Node<K,V>?) {
+    private fun delete(key: K, tree: Node<K, V>?) {
         if (tree == null) {
             return
         }
 
-        val visited = mutableListOf<Node<K,V>>()
+        val visited = mutableListOf<Node<K, V>>()
         val node = search(key, tree) {
             visited.add(it)
         } ?: return
@@ -123,9 +123,9 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
         }
     }
 
-    private class Node<K : Comparable<K>,V>(val key: K, val value: V, var height: Int) {
-        var left: Node<K,V>? = null
-        var right: Node<K,V>? = null
+    private class Node<K : Comparable<K>, V>(val key: K, val value: V, var height: Int) {
+        var left: Node<K, V>? = null
+        var right: Node<K, V>? = null
 
         val leftHeight
             get() = left?.height ?: 0
@@ -138,13 +138,13 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
 
         override fun toString() = "$key"
 
-        override fun equals(other: Any?) = if (other is Node<*,*>) other.key == key else false
+        override fun equals(other: Any?) = if (other is Node<*, *>) other.key == key else false
 
         private fun updateHeight() {
             height = 1 + max(leftHeight, rightHeight)
         }
 
-        fun leftRotate(): Node<K,V>? {
+        fun leftRotate(): Node<K, V>? {
             val other = right ?: return this
 
             other.left = this.also { it.right = other.left }
@@ -155,7 +155,7 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
             return other
         }
 
-        fun rightRotate(): Node<K,V>? {
+        fun rightRotate(): Node<K, V>? {
             val other = this.left ?: return this
 
             other.right = this.also { it.left = other.right }
@@ -174,7 +174,7 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
             }
         }
 
-        fun replaceChild(node: Node<K, V>, with: Node<K,V>?) {
+        fun replaceChild(node: Node<K, V>, with: Node<K, V>?) {
             if (right == node) {
                 right = with
             } else if (left == node) {
@@ -182,7 +182,7 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
             }
         }
 
-        fun min(): Node<K,V> {
+        fun min(): Node<K, V> {
             return if (left == null) {
                 this
             } else {
@@ -194,6 +194,6 @@ class AvlTree<K : Comparable<K>,V>(vararg init: Pair<K,V>) {
     }
 }
 
-fun <K : Comparable<K>,V> avlTree(items: Map<K,V>): AvlTree<K,V> {
+fun <K : Comparable<K>, V> avlTree(items: Map<K, V>): AvlTree<K, V> {
     return AvlTree(*items.map { Pair(it.key, it.value) }.toTypedArray())
 }

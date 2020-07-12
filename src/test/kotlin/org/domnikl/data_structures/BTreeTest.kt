@@ -7,7 +7,7 @@ import org.junit.Test
 class BTreeTest {
     @Test
     fun `keeps track of it's size`() {
-        val btree = BTree<Int,String>()
+        val btree = BTree<Int, String>()
 
         assertEquals(0, btree.size)
         assert(btree.isEmpty())
@@ -20,7 +20,7 @@ class BTreeTest {
 
     @Test
     fun `can insert key-value pairs`() {
-        val btree = BTree<Int,String>()
+        val btree = BTree<Int, String>()
 
         val values = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -37,7 +37,7 @@ class BTreeTest {
 
     @Test
     fun `can insert massive amounts of ints`() {
-        val btree = BTree<Int,Int>()
+        val btree = BTree<Int, Int>()
 
         (0..1_000_000).shuffled().forEach {
             btree[it] = it
@@ -50,6 +50,6 @@ class BTreeTest {
 
     @Test
     fun `returns null when value is not in tree`() {
-        assertNull(BTree<Int,Int>()[0])
+        assertNull(BTree<Int, Int>()[0])
     }
 }

@@ -19,7 +19,7 @@ private fun <T : Comparable<T>> Array<T>.merge(l: Array<T>, r: Array<T>): Array<
     var k = 0
 
     while (i < l.size && j < r.size) {
-        if (l[i]<= r[j]) {
+        if (l[i] <= r[j]) {
             this[k] = l[i]
             i++
         } else {

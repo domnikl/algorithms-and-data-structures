@@ -22,7 +22,6 @@ private fun <T : Comparable<T>> Array<T>.quickSelect(low: Int, high: Int, select
             this.quickSelect(pivotIndex + 1, high, select)
         }
     }
-
 }
 
 private fun <T : Comparable<T>> Array<T>.partition(low: Int, high: Int): Int {

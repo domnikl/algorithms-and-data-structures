@@ -45,7 +45,6 @@ class DoubleLinkedListTest {
         assertEquals(42, list.last())
     }
 
-
     @Test
     fun `can be cleared`() {
         val list = DoubleLinkedList<Int>().also {

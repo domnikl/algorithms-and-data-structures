@@ -16,7 +16,7 @@ fun <T : Comparable<T>> Array<T>.bucketSort(bucketSize: Int = 8): Array<T> {
     var i = 0
 
     buckets
-        .map { e -> e.sortedBy { it }}
+        .map { e -> e.sortedBy { it } }
         .forEach {
             it.forEach { e ->
                 this[i] = e
