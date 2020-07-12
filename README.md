@@ -29,6 +29,10 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 * [Insertion sort](src/main/kotlin/org/domnikl/algorithms/sorting/InsertionSort.kt)
 * [Bucket sort](src/main/kotlin/org/domnikl/algorithms/sorting/BucketSort.kt)
 
+## select
+
+* [Quick select](src/main/kotlin/org/domnikl/algorithms/select/QuickSelect.kt)
+
 ## graphs
 
 * [breadth first search](src/main/kotlin/org/domnikl/algorithms/graphs/Graph.kt)
