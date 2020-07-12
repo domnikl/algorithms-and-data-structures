@@ -4,7 +4,7 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 
 ## data structures
 
-* [Dynamicly resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
+* [Dynamically resizing array](src/main/kotlin/org/domnikl/data_structures/ResizingArray.kt)
 * [Linked list](src/main/kotlin/org/domnikl/data_structures/LinkedList.kt)
 * [Double linked list](src/main/kotlin/org/domnikl/data_structures/DoubleLinkedList.kt)
 * [Stack](src/main/kotlin/org/domnikl/data_structures/Stack.kt)
@@ -28,7 +28,12 @@ Implementations of common algorithms and data structures in Kotlin, mostly done 
 * [Selection sort](src/main/kotlin/org/domnikl/algorithms/sorting/SelectionSort.kt)
 * [Insertion sort](src/main/kotlin/org/domnikl/algorithms/sorting/InsertionSort.kt)
 * [Bucket sort](src/main/kotlin/org/domnikl/algorithms/sorting/BucketSort.kt)
+* [Counting sort](src/main/kotlin/org/domnikl/algorithms/sorting/CountingSort.kt)
 * [Radix sort](src/main/kotlin/org/domnikl/algorithms/sorting/RadixSort.kt)
+
+## select
+
+* [Quick select](src/main/kotlin/org/domnikl/algorithms/select/QuickSelect.kt)
 
 ## graphs
 
