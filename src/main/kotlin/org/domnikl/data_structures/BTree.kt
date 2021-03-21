@@ -101,8 +101,8 @@ class BTree<K : Comparable<K>, V> {
     }
 
     private class Entry<K, V>(
-      var key: K,
-      val value: V?,
-      var next: Node<K, V>? = null
+        var key: K,
+        val value: V?,
+        var next: Node<K, V>? = null
     )
 }
