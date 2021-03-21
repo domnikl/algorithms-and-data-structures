@@ -100,4 +100,15 @@ class LinkedListTest {
 
         assertEquals(listOf(1, 2), list.toSequence().toList())
     }
+
+    @Test
+    fun `can be reversed`() {
+        val list = LinkedList<Char>().also {
+            it.addFirst('C')
+            it.addFirst('B')
+            it.addFirst('A')
+        }
+
+        assertEquals(listOf('C', 'B', 'A'), list.reverse().toSequence().toList())
+    }
 }

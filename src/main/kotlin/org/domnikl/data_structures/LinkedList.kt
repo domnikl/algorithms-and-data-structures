@@ -101,6 +101,23 @@ class LinkedList<T : Any> {
         }
     }
 
+    fun reverse(): LinkedList<T> {
+        var previous: Node<T>? = null
+        var current = head
+        var following = head
+
+        while (current != null) {
+            following = following?.next
+            current.next = previous
+            previous = current
+            current = following
+        }
+
+        head = previous
+
+        return this
+    }
+
     private class Node<N>(val data: N) {
         var next: Node<N>? = null
     }
