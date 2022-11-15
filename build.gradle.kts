@@ -13,7 +13,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     testCompileOnly("junit:junit:4.13.2")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.3.1")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.9.1")
 }
 
 tasks {
