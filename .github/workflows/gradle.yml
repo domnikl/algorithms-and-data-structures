@@ -17,6 +17,6 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         java-version: 8
-    - uses: eskatos/gradle-command-action@v1
+    - uses: eskatos/gradle-command-action@v2
       with:
         arguments: build
